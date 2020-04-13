@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using dotnetcore_configurations.Models.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -17,6 +18,15 @@ namespace dotnetcore_configurations.Controllers
         {
             this.configuration = configuration;
         }
+        public IActionResult Index2()
+        {
+            var dashboardSettings = new DashboardSettings();
+            configuration.Bind("DashboardSettings", dashboardSettings);
+
+            //requires using Newtonsoft.Json
+            return Content(JsonConvert.SerializeObject(dashboardSettings));
+        }
+
         public IActionResult Index()
         {
             List<object> listSettings = new List<object>();
@@ -33,5 +43,7 @@ namespace dotnetcore_configurations.Controllers
             //requires using Newtonsoft.Json
             return Content(JsonConvert.SerializeObject(listSettings));
         }
+
+        
     }
 }
