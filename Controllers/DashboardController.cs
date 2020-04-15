@@ -18,6 +18,7 @@ namespace dotnetcore_configurations.Controllers
         {
             this.configuration = configuration;
         }
+
         public IActionResult Index2()
         {
             var dashboardSettings = new DashboardSettings();
@@ -42,8 +43,6 @@ namespace dotnetcore_configurations.Controllers
 
             //requires using Newtonsoft.Json
             return Content(JsonConvert.SerializeObject(listSettings));
-        }
-
-        
+        }        
     }
 }
