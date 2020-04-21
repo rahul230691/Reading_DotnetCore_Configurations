@@ -32,6 +32,14 @@ namespace dotnetcore_configurations
             services.Configure<DashboardHeaderConfiguration>(this._configuration.GetSection("DashboardSettings:Header"));
 
             services.AddSingleton<IConfigurationReader, ConfigurationReader>();
+
+            services.Configure<NormalThemeDashboardSettings>(_configuration.GetSection("DashboardThemeSettings:NormalTheme"));
+            services.Configure<DarkThemeDashboardSettings>(_configuration.GetSection("DashboardThemeSettings:DarkTheme"));
+
+            services.AddSingleton<IThemeConfigurationReader, ThemeConfigurationReader>();
+
+            services.Configure<DashboardThemeSettings>("Normal", _configuration.GetSection("DashboardThemeSettings:NormalTheme"));
+            services.Configure<DashboardThemeSettings>("Dark", _configuration.GetSection("DashboardThemeSettings:DarkTheme"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

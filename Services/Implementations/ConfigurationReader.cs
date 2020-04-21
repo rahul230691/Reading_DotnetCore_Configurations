@@ -13,6 +13,10 @@ namespace dotnetcore_configurations.Services.Implementations
         public ConfigurationReader(IOptionsMonitor<DashboardHeaderConfiguration> optionsMonitor)
         {
             this.dashboardHeaderConfig = optionsMonitor.CurrentValue;
+            optionsMonitor.OnChange(config =>
+            {
+                this.dashboardHeaderConfig = config;
+            });
         }
 
         public string ReadDashboardHeaderSettings()

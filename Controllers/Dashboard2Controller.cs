@@ -13,15 +13,15 @@ namespace dotnetcore_configurations.Controllers
     {
         private readonly DashboardHeaderConfiguration dashboardHeaderConfig;
 
-        //public Dashboard2Controller(IOptions<DashboardHeaderConfiguration> options)
-        //{
-        //    dashboardHeaderConfig = options.Value;
-        //}
-
-        public Dashboard2Controller(IOptionsSnapshot<DashboardHeaderConfiguration> optionsSnapshot)
+        public Dashboard2Controller(IOptions<DashboardHeaderConfiguration> options)
         {
-            dashboardHeaderConfig = optionsSnapshot.Value;
+            dashboardHeaderConfig = options.Value;
         }
+
+        //public Dashboard2Controller(IOptionsSnapshot<DashboardHeaderConfiguration> optionsSnapshot)
+        //{
+        //    dashboardHeaderConfig = optionsSnapshot.Value;
+        //}
 
         public IActionResult Index()
         {

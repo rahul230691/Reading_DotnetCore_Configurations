@@ -9,16 +9,25 @@ namespace dotnetcore_configurations.Controllers
 {
     public class Dashboard3Controller : Controller
     {
-        private readonly IConfigurationReader configurationReader;
+        private readonly IConfigurationReader _configurationReader;
+        private readonly IThemeConfigurationReader _themeConfigurationReader;
 
-        public Dashboard3Controller(IConfigurationReader configurationReader)
+        public Dashboard3Controller(
+            IConfigurationReader configurationReader,
+            IThemeConfigurationReader themeConfigurationReader)
         {
-            this.configurationReader = configurationReader;
+            this._configurationReader = configurationReader;
+            this._themeConfigurationReader = themeConfigurationReader;
         }
 
         public IActionResult Index()
         {
-            return Content(this.configurationReader.ReadDashboardHeaderSettings());
+            return Content(this._configurationReader.ReadDashboardHeaderSettings());
+        }
+
+        public IActionResult Index2()
+        {
+            return Content(this._themeConfigurationReader.ReadThemeSettings());
         }
     }
 }
